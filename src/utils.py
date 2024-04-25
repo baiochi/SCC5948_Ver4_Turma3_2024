@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 from matplotlib import pyplot as plt
 from sklearn.metrics import roc_curve, auc, roc_auc_score
 
@@ -51,14 +52,14 @@ def plot_roc_auc_multilabel(y_true, y_pred_proba, class_labels):
     plt.plot([0, 1], [0, 1], color='gray', linestyle='--')
     plt.xlabel('False Positive Rate')
     plt.ylabel('True Positive Rate')
-    plt.title('Extension of ROC to Multi-label Classification')
+    plt.title('Extension of ROC to Multi-label Classification (OvR)')
     plt.legend(loc='lower right')
     plt.grid(True)
     plt.show()
 
 
-def display_features_importance(model, type: str):
-    importances = model.named_steps[type].feature_importances_
+def display_features_importance(model, model_type: str, numerical_variables, categorical_variables):
+    importances = model.named_steps[model_type].feature_importances_
     features = (numerical_variables +
                 model.named_steps['preprocessor'].transformers_[1][1].named_steps[
                     'encoder'].get_feature_names_out(categorical_variables).tolist())
