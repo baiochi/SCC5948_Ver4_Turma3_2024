@@ -39,15 +39,15 @@ def plot_roc_auc_multilabel(y_true, y_pred_proba, class_labels):
         plt.plot(fpr[i], tpr[i], color=color, lw=2,
                  label=f'{class_labels[i]} (AUC = {roc_auc_scores[i]:.2f})')
 
-    # Plot micro-average ROC curve
-    plt.plot(fpr_micro, tpr_micro, color='deeppink',
-             linestyle=':', linewidth=4,
-             label=f'micro-average ROC curve (AUC = {roc_auc_micro:.2f})')
-
-    # Plot macro-average ROC curve
-    plt.plot(fpr_macro, tpr_macro, color='navy',
-             linestyle=':', linewidth=4,
-             label=f'macro-average ROC curve (AUC = {roc_auc_macro:.2f})')
+    # # Plot micro-average ROC curve
+    # plt.plot(fpr_micro, tpr_micro, color='deeppink',
+    #          linestyle=':', linewidth=4,
+    #          label=f'micro-average ROC curve (AUC = {roc_auc_micro:.2f})')
+    #
+    # # Plot macro-average ROC curve
+    # plt.plot(fpr_macro, tpr_macro, color='navy',
+    #          linestyle=':', linewidth=4,
+    #          label=f'macro-average ROC curve (AUC = {roc_auc_macro:.2f})')
 
     plt.plot([0, 1], [0, 1], color='gray', linestyle='--')
     plt.xlabel('False Positive Rate')
